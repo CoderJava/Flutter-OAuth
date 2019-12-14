@@ -5,10 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_sample_oauth/src/bloc/register/register_bloc.dart';
 import 'package:flutter_sample_oauth/src/model/register/register.dart';
+import 'package:flutter_sample_oauth/src/widget/widget_card_loading.dart';
 
 class RegisterScreen extends StatelessWidget {
   final RegisterBloc _registerBloc = RegisterBloc();
-  final TextEditingController _controllerUsername = TextEditingController();
+  final TextEditingController _controllerEmailAddress = TextEditingController();
   final TextEditingController _controllerPassword = TextEditingController();
   final TextEditingController _controllerAge = TextEditingController();
 
@@ -132,26 +133,7 @@ class RegisterScreen extends StatelessWidget {
     return BlocBuilder<RegisterBloc, RegisterState>(
       builder: (context, state) {
         if (state is RegisterLoading) {
-          return Container(
-            color: Colors.black.withOpacity(0.7),
-            width: double.infinity,
-            height: double.infinity,
-            child: Center(
-              child: Container(
-                width: 128.0,
-                height: 128.0,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(8.0),
-                  ),
-                ),
-                child: Center(
-                  child: Platform.isIOS ? CupertinoActivityIndicator() : CircularProgressIndicator(),
-                ),
-              ),
-            ),
-          );
+          return WidgetCardLoading();
         } else {
           return Container();
         }
@@ -169,7 +151,7 @@ class RegisterScreen extends StatelessWidget {
         ),
         color: Theme.of(context).primaryColor,
         onPressed: () {
-          String username = _controllerUsername.text.trim();
+          String username = _controllerEmailAddress.text.trim();
           String password = _controllerPassword.text.trim();
           String strAge = _controllerAge.text.trim();
           int age = strAge.isEmpty ? 0 : int.parse(strAge);
@@ -189,7 +171,7 @@ class RegisterScreen extends StatelessWidget {
 
   Widget _buildWidgetTextFieldEmailAddress() {
     return TextField(
-      controller: _controllerUsername,
+      controller: _controllerEmailAddress,
       keyboardType: TextInputType.emailAddress,
     );
   }

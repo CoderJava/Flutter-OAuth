@@ -10,6 +10,7 @@ class LoginScreen extends StatelessWidget {
 
     return Scaffold(
       body: Container(
+        padding: EdgeInsets.only(bottom: paddingBottom > 0 ? paddingBottom : 16.0),
         color: Colors.white,
         height: double.infinity,
         child: Stack(
@@ -18,24 +19,26 @@ class LoginScreen extends StatelessWidget {
             _buildWidgetOverlayBackgroundImageHeader(heightScreen),
             _buildWidgetRectangleWhite(heightScreen),
             Padding(
-              padding: EdgeInsets.only(
-                left: 16.0,
-                right: 16.0,
-                bottom: paddingBottom > 0 ? paddingBottom : 16.0,
-              ),
+              padding: EdgeInsets.symmetric(horizontal: 16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  _buildWidgetSizedBox(heightScreen / 2.6),
-                  _buildWidgetTitleLogin(context),
-                  _buildWidgetSizedBox(16.0),
-                  _buildWidgetLabel(context, 'EMAIL ADDRESS'),
-                  _buildWidgetTextFieldEmailAddress(),
-                  _buildWidgetSizedBox(16.0),
-                  _buildWidgetLabel(context, 'PASSWORD'),
-                  _buildWidgetTextFieldPassword(),
-                  _buildWidgetSizedBox(16.0),
-                  _buildWidgetButtonSignin(context),
+                  Expanded(
+                    child: ListView(
+                      children: <Widget>[
+                        _buildWidgetSizedBox(heightScreen / 2.6),
+                        _buildWidgetTitleLogin(context),
+                        _buildWidgetSizedBox(16.0),
+                        _buildWidgetLabel(context, 'EMAIL ADDRESS'),
+                        _buildWidgetTextFieldEmailAddress(),
+                        _buildWidgetSizedBox(16.0),
+                        _buildWidgetLabel(context, 'PASSWORD'),
+                        _buildWidgetTextFieldPassword(),
+                        _buildWidgetSizedBox(16.0),
+                        _buildWidgetButtonSignin(context),
+                      ],
+                    ),
+                  ),
                   _buildWidgetLabelCreateNewAccount(context),
                 ],
               ),
@@ -47,35 +50,29 @@ class LoginScreen extends StatelessWidget {
   }
 
   Widget _buildWidgetLabelCreateNewAccount(BuildContext context) {
-    return Expanded(
-      child: Stack(
-        children: <Widget>[
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: GestureDetector(
-              onTap: () {
-                // TODO: do something in here
-              },
-              child: RichText(
-                text: TextSpan(
-                  style: TextStyle(color: Colors.black),
-                  children: [
-                    TextSpan(
-                      text: 'Don\'t have account? ',
-                    ),
-                    TextSpan(
-                      text: 'Create new account.',
-                      style: TextStyle(
-                        color: Theme.of(context).primaryColor,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
+    return Align(
+      alignment: Alignment.center,
+      child: GestureDetector(
+        onTap: () {
+          Navigator.pushNamed(context, '/register_screen');
+        },
+        child: RichText(
+          text: TextSpan(
+            style: TextStyle(color: Colors.black),
+            children: [
+              TextSpan(
+                text: 'Don\'t have account? ',
+              ),
+              TextSpan(
+                text: 'Create new account.',
+                style: TextStyle(
+                  color: Theme.of(context).primaryColor,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-            ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

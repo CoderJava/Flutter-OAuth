@@ -20,6 +20,9 @@ dependencies:
   # Flutter plugin for reading and writing
   shared_preferences: ^0.5.4+8
 
+  # Flutter widgets that make it easy to implement the BLoC design pattern.
+  flutter_bloc: ^2.1.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

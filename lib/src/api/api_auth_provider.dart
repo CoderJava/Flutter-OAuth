@@ -27,7 +27,7 @@ class ApiAuthProvider {
       _sharedPreferencesManager = await SharedPreferencesManager.getInstance();
     }
     _dio.options.baseUrl = _baseUrl;
-    _dio.interceptors.add(DioLoggingInterceptors(_dio, _sharedPreferencesManager));
+    _dio.interceptors.add(DioLoggingInterceptors(_dio));
   }
 
   Future<Diagnostic> registerUser(Register register) async {
@@ -72,13 +72,12 @@ class ApiAuthProvider {
     try {
       final response = await _dio.post(
         'oauth/token',
-        data: refreshTokenBody.toJson(),
+        data: FormData.fromMap(refreshTokenBody.toJson()),
         options: Options(
           headers: {
-            'Content-Type': 'application/json',
-            'Authorization': base64Encode(
+            'Authorization': 'Basic ${base64Encode(
               utf8.encode('$clientId:$clientSecret'),
-            ),
+            )}',
           },
         ),
       );
@@ -91,8 +90,9 @@ class ApiAuthProvider {
 
   Future<User> getAllUsers() async {
     try {
+      print('getAllUsers');
       final response = await _dio.get(
-        '/users/user',
+        'users/user',
         options: Options(
           headers: {
             'requiresToken': true,

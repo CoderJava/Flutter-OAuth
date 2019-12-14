@@ -43,7 +43,7 @@ class LoginScreen extends StatelessWidget {
                   }
                 },
               );
-            } else {
+            } else if (state is LoginSuccess){
               Navigator.pushNamedAndRemoveUntil(context, '/dashboard_user_screen', (r) => false);
             }
           },

@@ -18,10 +18,17 @@ dependencies:
   dio: ^3.0.7
 
   # Flutter plugin for reading and writing
-  shared_preferences: ^0.5.4+8
+  shared_preferences: ^0.5.5
 
   # Flutter widgets that make it easy to implement the BLoC design pattern.
   flutter_bloc: ^2.1.1
+
+  # Simple direct Service Locator that allows to decouple the interface from a concrete implementation
+  # and to access the concrete implementation from everywhere in your App
+  get_it: ^3.0.3
+
+  # The Font Awesome Icon pack
+  font_awesome_flutter: ^8.5.0
 
 dev_dependencies:
   flutter_test:

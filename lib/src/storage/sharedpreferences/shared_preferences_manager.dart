@@ -7,7 +7,7 @@ class SharedPreferencesManager {
   static const String keyAccessToken = 'accessToken';
   static const String keyRefreshToken = 'refreshToken';
   static const String keyIsLogin = 'isLogin';
-  static const String username = 'username';
+  static const String keyUsername = 'username';
 
   static Future<SharedPreferencesManager> getInstance() async {
     if (_instance == null) {

@@ -52,13 +52,12 @@ class ApiAuthProvider {
     try {
       final response = await _dio.post(
         'oauth/token',
-        data: loginBody.toJson(),
+        data: FormData.fromMap(loginBody.toJson()),
         options: Options(
           headers: {
-            'Content-Type': 'application/json',
-            'Authorization': base64Encode(
+            'Authorization': 'Basic ${base64Encode(
               utf8.encode('$clientId:$clientSecret'),
-            ),
+            )}',
           },
         ),
       );

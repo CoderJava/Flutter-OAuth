@@ -6,7 +6,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_sample_oauth/src/bloc/login/login_bloc.dart';
 import 'package:flutter_sample_oauth/src/model/login/login_body.dart';
-import 'package:flutter_sample_oauth/src/storage/sharedpreferences/shared_preferences_manager.dart';
 import 'package:flutter_sample_oauth/src/widget/widget_card_loading.dart';
 
 class LoginScreen extends StatelessWidget {

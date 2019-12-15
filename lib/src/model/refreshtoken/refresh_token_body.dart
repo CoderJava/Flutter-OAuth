@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+
 part 'refresh_token_body.g.dart';
 
 @JsonSerializable()
@@ -18,5 +19,4 @@ class RefreshTokenBody {
   String toString() {
     return 'RefreshTokenBody{grantType: $grantType, refreshToken: $refreshToken}';
   }
-
 }

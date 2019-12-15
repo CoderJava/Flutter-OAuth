@@ -1,5 +1,6 @@
 import 'package:flutter_sample_oauth/src/model/diagnostic/diagnostic.dart';
 import 'package:json_annotation/json_annotation.dart';
+
 part 'user.g.dart';
 
 @JsonSerializable()
@@ -21,7 +22,6 @@ class User {
   String toString() {
     return 'User{diagnostic: $diagnostic, users: $users}';
   }
-
 }
 
 @JsonSerializable()
@@ -39,5 +39,4 @@ class ItemUser {
   String toString() {
     return 'ItemUser{username: $username, age: $age}';
   }
-
 }

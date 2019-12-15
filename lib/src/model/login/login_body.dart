@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+
 part 'login_body.g.dart';
 
 @JsonSerializable()
@@ -18,5 +19,4 @@ class LoginBody {
   String toString() {
     return 'LoginBody{username: $username, password: $password, grantType: $grantType}';
   }
-
 }

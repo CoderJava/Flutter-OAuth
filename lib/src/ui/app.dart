@@ -6,12 +6,11 @@ import 'package:flutter_sample_oauth/src/ui/login/login_screen.dart';
 import 'package:flutter_sample_oauth/src/ui/register/register_screen.dart';
 
 class App extends StatelessWidget {
-  SharedPreferencesManager _sharedPreferencesManager = locator<SharedPreferencesManager>();
-  bool _isAlreadyLoggedIn = false;
+  final SharedPreferencesManager _sharedPreferencesManager = locator<SharedPreferencesManager>();
 
   @override
   Widget build(BuildContext context) {
-    _isAlreadyLoggedIn = _sharedPreferencesManager.isKeyExists(SharedPreferencesManager.keyIsLogin)
+    bool _isAlreadyLoggedIn = _sharedPreferencesManager.isKeyExists(SharedPreferencesManager.keyIsLogin)
         ? _sharedPreferencesManager.getBool(SharedPreferencesManager.keyIsLogin)
         : false;
 

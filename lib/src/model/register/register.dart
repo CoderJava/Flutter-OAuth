@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+
 part 'register.g.dart';
 
 @JsonSerializable()
@@ -17,5 +18,4 @@ class Register {
   String toString() {
     return 'Register{age: $age, username: $username, password: $password}';
   }
-
 }

@@ -15,6 +15,10 @@ class RegisterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    MediaQueryData mediaQueryData = MediaQuery.of(context);
+    double paddingTop = mediaQueryData.padding.top;
+    double paddingBottom = mediaQueryData.padding.bottom;
+
     return Scaffold(
       body: BlocProvider<RegisterBloc>(
         create: (context) => _registerBloc,
@@ -93,7 +97,12 @@ class RegisterScreen extends StatelessWidget {
             child: Stack(
               children: <Widget>[
                 Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: EdgeInsets.only(
+                    left: 16.0,
+                    top: paddingTop > 0 ? paddingTop : 16.0,
+                    right: 16.0,
+                    bottom: paddingBottom > 0 ? paddingBottom : 16.0,
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[

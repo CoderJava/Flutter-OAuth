@@ -8,24 +8,15 @@ import 'package:flutter_sample_oauth/src/model/refreshtoken/refresh_token_body.d
 import 'package:flutter_sample_oauth/src/model/register/register.dart';
 import 'package:flutter_sample_oauth/src/model/token/token.dart';
 import 'package:flutter_sample_oauth/src/model/user/user.dart';
-import 'package:flutter_sample_oauth/src/storage/sharedpreferences/shared_preferences_manager.dart';
 import 'package:flutter_sample_oauth/src/utils/dio_logging_interceptors.dart';
 
 class ApiAuthProvider {
-  SharedPreferencesManager _sharedPreferencesManager;
   final Dio _dio = new Dio();
   final String _baseUrl = 'http://bengkelrobot.net:8002/';
   final String clientId = 'bengkel-robot-client';
   final String clientSecret = 'bengkel-robot-secret';
 
   ApiAuthProvider() {
-    _initSharedPreferencesManager();
-  }
-
-  Future _initSharedPreferencesManager() async {
-    if (_sharedPreferencesManager == null) {
-      _sharedPreferencesManager = await SharedPreferencesManager.getInstance();
-    }
     _dio.options.baseUrl = _baseUrl;
     _dio.interceptors.add(DioLoggingInterceptors(_dio));
   }

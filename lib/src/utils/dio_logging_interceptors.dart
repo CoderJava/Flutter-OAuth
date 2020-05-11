@@ -25,8 +25,8 @@ class DioLoggingInterceptors extends InterceptorsWrapper {
     }
     print("--> END ${options.method != null ? options.method.toUpperCase() : 'METHOD'}");
 
-    if (options.headers.containsKey('requiresToken')) {
-      options.headers.remove('requiresToken');
+    if (options.headers.containsKey('requirestoken')) {
+      options.headers.remove('requirestoken');
       print('accessToken: ${_sharedPreferencesManager.getString(SharedPreferencesManager.keyAccessToken)}');
       String accessToken = _sharedPreferencesManager.getString(SharedPreferencesManager.keyAccessToken);
       options.headers.addAll({'Authorization': 'Bearer $accessToken'});
@@ -69,7 +69,7 @@ class DioLoggingInterceptors extends InterceptorsWrapper {
       await _sharedPreferencesManager.putString(SharedPreferencesManager.keyRefreshToken, newRefreshToken);
 
       RequestOptions options = dioError.response.request;
-      options.headers.addAll({'requiresToken': true});
+      options.headers.addAll({'requirestoken': true});
       _dio.interceptors.requestLock.unlock();
       _dio.interceptors.responseLock.unlock();
       return _dio.request(options.path, options: options);

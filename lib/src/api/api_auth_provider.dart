@@ -86,7 +86,7 @@ class ApiAuthProvider {
         'users/user',
         options: Options(
           headers: {
-            'requiresToken': true,
+            'requirestoken': true,
           },
         ),
       );
